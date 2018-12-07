@@ -1,0 +1,226 @@
+GET item/_search?explain=true
+{
+  "from": 10,
+  "size": 100,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "bool": {
+            "should": [
+              {
+                "terms": {
+                  "preCategoryList": [
+                    "茶器"
+                  ],
+                  "boost": 1.0
+                }
+              },
+              {
+                "nested": {
+                  "query": {
+                    "terms": {
+                      "tags.value": [
+                        "茶器"
+                      ],
+                      "boost": 1.0
+                    }
+                  },
+                  "path": "tags",
+                  "ignore_unmapped": false,
+                  "score_mode": "avg",
+                  "boost": 1.0
+                }
+              },
+              {
+                "terms": {
+                  "titleSmart": [
+                    "茶器"
+                  ],
+                  "boost": 1.0
+                }
+              },
+              {
+                "nested": {
+                  "query": {
+                    "terms": {
+                      "attrs.value": [
+                        "茶器"
+                      ],
+                      "boost": 1.0
+                    }
+                  },
+                  "path": "attrs",
+                  "ignore_unmapped": false,
+                  "score_mode": "avg",
+                  "boost": 1.0
+                }
+              }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1.0
+          }
+        },
+        {
+          "has_parent": {
+            "query": {
+              "match_all": {
+                "boost": 1.0
+              }
+            },
+            "parent_type": "user",
+            "score": false,
+            "ignore_unmapped": false,
+            "boost": 1.0,
+            "inner_hits": {
+              "ignore_unmapped": false,
+              "from": 0,
+              "size": 3,
+              "version": false,
+              "explain": false,
+              "track_scores": false
+            }
+          }
+        }
+      ],
+      "filter": [
+        {
+          "bool": {
+            "must": [
+              {
+                "range": {
+                  "stock": {
+                    "from": 0,
+                    "to": null,
+                    "include_lower": false,
+                    "include_upper": true,
+                    "boost": 1.0
+                  }
+                }
+              },
+              {
+                "terms": {
+                  "type": [
+                    1,
+                    2
+                  ],
+                  "boost": 1.0
+                }
+              },
+              {
+                "term": {
+                  "itemStatus": {
+                    "value": 1,
+                    "boost": 1.0
+                  }
+                }
+              },
+              {
+                "term": {
+                  "bottom": {
+                    "value": 0,
+                    "boost": 1.0
+                  }
+                }
+              },
+              {
+                "term": {
+                  "postStatus": {
+                    "value": 0,
+                    "boost": 1.0
+                  }
+                }
+              },
+              {
+                "term": {
+                  "filter": {
+                    "value": 0,
+                    "boost": 1.0
+                  }
+                }
+              },
+              {
+                "has_parent": {
+                  "query": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "inBlackList": {
+                              "value": false,
+                              "boost": 1.0
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "craftsmanRemoved": {
+                              "value": false,
+                              "boost": 1.0
+                            }
+                          }
+                        }
+                      ],
+                      "adjust_pure_negative": true,
+                      "boost": 1.0
+                    }
+                  },
+                  "parent_type": "user",
+                  "score": false,
+                  "ignore_unmapped": false,
+                  "boost": 1.0
+                }
+              }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1.0
+          }
+        }
+      ],
+      "adjust_pure_negative": true,
+      "boost": 1.0
+    }
+  },
+  "aggregations": {
+    "leafPreCategoryList": {
+      "terms": {
+        "field": "leafPreCategoryList",
+        "size": 20,
+        "min_doc_count": 1,
+        "shard_min_doc_count": 0,
+        "show_term_doc_count_error": false,
+        "order": [
+          {
+            "_count": "desc"
+          },
+          {
+            "_key": "asc"
+          }
+        ]
+      }
+    }
+  },
+  "rescore": [
+    {
+      
+      "window_size":1000,
+      "query": {
+        
+        "rescore_query": {
+          "sltr": {
+            "model": "dongjia_xgboost_model",
+            "params": {
+              "currentTime": 1530324855,
+              "keywords": "茶器",
+              "queryid": "54"
+            },
+            "boost": 1.0
+          }
+        },
+        "query_weight": 1.0,
+        "rescore_query_weight": 1.0,
+        "score_mode": "total"
+      }
+    }
+  ]
+}
