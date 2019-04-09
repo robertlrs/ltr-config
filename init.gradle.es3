@@ -1,0 +1,55 @@
+
+allprojects{
+    repositories {
+        def ALIYUN_REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public'
+        def ALIYUN_JCENTER_URL = 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+        def DONGJIA_PUBLIC_URL = 'http://172.16.254.185:8082/nexus/content/groups/public/'
+        def DONGJIA_SNAPSHOT_URL = 'http://172.16.254.185:8082/nexus/content/repositories/snapshots'
+        all { ArtifactRepository repo ->
+              if (repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.startsWith('https://repo1.maven.org/maven2')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_PUBLIC_URL."
+                    remove repo
+                }
+                if (url.startsWith('https://jcenter.bintray.com/')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL."
+                    remove repo
+                }
+            }
+        }
+        mavenLocal()
+        maven {
+              url ALIYUN_REPOSITORY_URL
+        all { ArtifactRepository repo ->
+              if (repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.startsWith('https://repo1.maven.org/maven2')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_PUBLIC_URL."
+                    remove repo
+                }
+                if (url.startsWith('https://jcenter.bintray.com/')) {
+                    project.logger.lifecycle "Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL."
+                    remove repo
+                }
+            }
+        }
+        mavenLocal()
+        maven {
+              url ALIYUN_REPOSITORY_URL
+        }
+        maven {
+              url DONGJIA_PUBLIC_URL
+        }
+        maven {
+               url DONGJIA_SNAPSHOT_URL
+        }
+        maven {
+                url ALIYUN_JCENTER_URL
+        }
+        maven {
+             url 'https://repository.mulesoft.org/nexus/content/repositories/public/'
+       }
+    }
+}
+}
