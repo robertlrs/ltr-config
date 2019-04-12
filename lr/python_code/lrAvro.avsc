@@ -1,0 +1,33 @@
+{
+  "type" : "record",
+  "name" : "TrainingExample",
+  "namespace" : "cn.dongjia.lr",
+  "fields" : [ {
+    "name" : "label",
+    "type" : [ "double", "float", "int", "long", "boolean", "string" ],
+    "doc" : "label/response of the event"
+  }, {
+    "name" : "features",
+    "type" : {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Feature",
+        "doc" : "a feature is a named numeric value",
+        "fields" : [ {
+          "name" : "name",
+          "type" : "string"
+        }, {
+          "name" : "value",
+          "type" : "double"
+        }, {
+          "name" : "term",
+          "type" : [ "null", "string" ],
+          "default" : null
+        } ]
+      }
+    },
+    "doc" : "sparse set of features describing the event"
+  }
+  ]
+}

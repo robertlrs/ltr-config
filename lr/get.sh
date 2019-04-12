@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -X GET "localhost:9200/item/_search" '
+curl -X GET "localhost:9200/item/_search" -H 'Content-Type: application/json' -d'
 {
   "from": 0,
   "size": 64,
@@ -47,6 +47,7 @@ curl -X GET "localhost:9200/item/_search" '
               {
                 "terms": {
                   "iid": [
+					1017684,
                     111221,
                     242817,
                     143069,
