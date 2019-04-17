@@ -1,0 +1,598 @@
+GET _cat/indices
+
+GET _ltr/_model/index_lr_model
+
+GET _ltr/_featureset/search_xgboost
+
+GET _cat/indices
+
+GET ltr_item/_search
+
+POST /_ltr/_clearcache 
+
+GET ltr_item/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "titleSmart2": {
+              "value": "绣刺"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+POST /_ltr/_clearcache
+
+GET item/_search
+
+
+GET _ltr/_model/index_lr_model
+GET _ltr/_featureset/index_lr_test
+
+DELETE item/item/i_1247010
+
+DELETE _ltr/_model/index_lr_model
+
+
+GET item/_search
+
+POST item/item/u_50409
+{
+          "avatar": "T39eWTB_dT1RCvBVdK.jpg",
+          "craftsmanRemoved": false,
+          "custId": 50409,
+          "customerStatus": 0,
+          "hashUid": 50409,
+          "id": "u_50409",
+          "inBlackList": false,
+          "passtm": 0,
+          "province": 77,
+          "uid": 50409,
+          "uidJoinField": {
+            "name": "user"
+          },
+          "username": "晓家 美好本子铺",
+          "city": "重庆",
+          "userType": 1
+        }
+        
+        
+GET item/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "iid": {
+              "value": "1158276"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+POST item/item/i_24512?routing=u_50409
+{
+          "addCartCount": 50,
+          "attrs": [
+            {
+              "attr": "封面材质",
+              "value": "布"
+            },
+            {
+              "attr": "装订方式",
+              "value": "线装式装订"
+            },
+            {
+              "attr": "幅面",
+              "value": "A5"
+            }
+          ],
+          "bottom": 0,
+          "cateCtr": 0.03,
+          "categories": [
+            {
+              "name": "家居",
+              "id": 218
+            },
+            {
+              "name": "文具",
+              "id": 252
+            },
+            {
+              "name": "笔记本／纸／便签",
+              "id": 254
+            }
+          ],
+          "category": 120,
+          "categoryGrade": 3,
+          "categoryId": 254,
+          "categoryTop": 0,
+          "collectcnt": 346,
+          "contentType": 3,
+          "conversionRate": 0,
+          "createtm": 1444895950000,
+          "desc": """
+《清平乐》简介
+同《孤芳》同系列。皆是以锦缎作面，立体流苏饰书脊。配上竹绿锦缎，古韵悠长。内页空白，可完全打开书写。
+
+【数据区域】
+请注意看档案图。
+
+【使用物流】
+圆通快递。
+
+【是否有现货区域】
+无现货，预定7天发货。
+店铺从26号开始停止接单，9月1号停止发货，9月12日恢复发货，请下单的顾客留意
+【购买须知】
+购买时请留意购买提示和数据。
+该库存为预定库存数量，此数量只代表目前能制作此款本子的材料，非现货库存，下单请注意
+
+【优惠须知】
+全场购买任意本子可获得小礼物一份
+""",
+          "evlcnt": 20,
+          "expoCategory": "jiaju",
+          "filter": 0,
+          "hashUid": 50409,
+          "hasvideo": false,
+          "id": "i_24512",
+          "iid": 77,
+          "itemCtr": 0.03,
+          "itemStatus": 1,
+          "leafPreCategoryList": [
+            "笔记本"
+          ],
+          "opCategory": "家居",
+          "opCategoryId": 5,
+          "parentCategoryId": 252,
+          "passtm": 0,
+          "pictures": """["T3NaJTBsbv1R49Ip6K.jpeg","T3ytJTBTWT1R49Ip6K.jpeg","T3KaJTBgET1R49Ip6K.jpeg","T3NtJTBsxv1R49Ip6K.jpeg","T3KyJTBgET1R49Ip6K.jpeg","T3ayJTBsxv1R49Ip6K.jpeg","T3wXYTB_dT1R49Ip6K.jpeg","T3dHVTB5DT1R49Ip6K"]""",
+          "pid": 24512,
+          "postStatus": 0,
+          "preCaIdSet": [
+            688,
+            289,
+            198
+          ],
+          "preCategoryList": [
+            "家居",
+            "文房办公",
+            "日用杂货",
+            "笔记本"
+          ],
+          "price": 128,
+          "reCateCtr": 0.0116,
+          "reItemCtr": 0.1,
+          "reItemCvr": 0,
+          "recommend": false,
+          "recommendTm": 0,
+          "recommendWeight": 0,
+          "refundRate": 0,
+          "replyCnt": 0,
+          "saleType": 0,
+          "sellcnt": 111,
+          "sellcntispersed": 6,
+          "sellerId": 50409,
+          "sellerTop": 0,
+          "services": "[]",
+          "special": 0,
+          "stock": 6,
+          "tabIdList": [
+            9003
+          ],
+          "tags": [
+            {
+              "id": 1240,
+              "value": "女友老婆"
+            }
+          ],
+          "title": "《清平乐》原创手工布艺笔记本 锦缎封面 手缝科普特线装 复古风 手帐",
+          "titleSmart": [
+            "清平乐",
+            "清平",
+            "平乐",
+            "原创",
+            "手工",
+            "手",
+            "工",
+            "布艺",
+            "笔记本",
+            "笔记",
+            "锦缎",
+            "封面",
+            "手",
+            "缝",
+            "科普",
+            "普特",
+            "线装",
+            "复古风",
+            "复古",
+            "古风",
+            "手",
+            "帐",
+            "清",
+            "平",
+            "乐",
+            "原",
+            "创",
+            "布",
+            "艺",
+            "笔",
+            "记",
+            "本",
+            "锦",
+            "缎",
+            "封",
+            "面",
+            "科",
+            "普",
+            "特",
+            "线",
+            "装",
+            "复",
+            "古",
+            "风"
+          ],
+          "type": 2,
+          "uidJoinField": {
+            "name": "owner",
+            "parent": "u_50409"
+          },
+          "updatetm": 1535099005000,
+          "userCtr": 0.03,
+          "province": 77,
+          "titleSmart2": [
+            "清",
+            "清平",
+            "平",
+            "清平乐",
+            "平乐",
+            "乐",
+            "原",
+            "原创",
+            "创",
+            "原创手",
+            "创手",
+            "手",
+            "原创手工",
+            "创手工",
+            "手工",
+            "工",
+            "原创手工布",
+            "创手工布",
+            "手工布",
+            "工布",
+            "布",
+            "原创手工布艺",
+            "创手工布艺",
+            "手工布艺",
+            "工布艺",
+            "布艺",
+            "艺",
+            "创手工布艺笔",
+            "手工布艺笔",
+            "工布艺笔",
+            "布艺笔",
+            "艺笔",
+            "笔",
+            "手工布艺笔记",
+            "工布艺笔记",
+            "布艺笔记",
+            "艺笔记",
+            "笔记",
+            "记",
+            "工布艺笔记本",
+            "布艺笔记本",
+            "艺笔记本",
+            "笔记本",
+            "记本",
+            "本",
+            "锦",
+            "锦缎",
+            "缎",
+            "锦缎封",
+            "缎封",
+            "封",
+            "锦缎封面",
+            "缎封面",
+            "封面",
+            "面",
+            "手缝",
+            "缝",
+            "手缝科",
+            "缝科",
+            "科",
+            "手缝科普",
+            "缝科普",
+            "科普",
+            "普",
+            "手缝科普特",
+            "缝科普特",
+            "科普特",
+            "普特",
+            "特",
+            "手缝科普特线",
+            "缝科普特线",
+            "科普特线",
+            "普特线",
+            "特线",
+            "线",
+            "缝科普特线装",
+            "科普特线装",
+            "普特线装",
+            "特线装",
+            "线装",
+            "装",
+            "复",
+            "复古",
+            "古",
+            "复古风",
+            "古风",
+            "风",
+            "手帐",
+            "帐"
+          ],
+          "titleVec": "1.0466013,0.9998814,0.29817617,0.915232,-1.6972244,-0.14417315,0.4521117,-0.4874379,0.21791641,0.08714088,-0.20695034,-0.25206015,0.11609591,-1.6965549,-0.8316688,0.16452497,-0.98547274,-0.844047,0.8154515,0.6705379,-0.3216253,-0.28796202,0.4760715,-0.058971506,-0.29700276,1.2833635,-0.4138586,-0.9576339,0.8254515,0.46750805,-0.5100884,0.22279018,-0.45040888,-0.5856174,-0.7010113,0.1669085,-1.2371894,0.6844482,-0.9600801,1.2489853,1.3801459,-0.6574983,-0.8629332,-0.34595472,-0.65958405,0.8535006,1.4807105,1.7575163,-0.39082038,-0.60031474",
+          "cateVec": "0.85989344,2.2366655,0.5619866,0.4244105,-2.5809083,-0.579975,1.3608272,-1.1790943,0.5432542,0.48017067,-0.4652999,-0.013516354,-0.39682457,-3.1999884,-0.54241484,0.18593295,-1.9284146,-0.68057334,1.5503451,0.7418982,0.3271602,-0.06671147,0.6213316,0.100543305,1.4921486,-0.22772229,1.5357784,-0.57766515,0.06042389,1.906234,-0.39272013,-0.6523007,-1.8912833,-2.459326,-0.8767435,0.8467535,-1.4124644,1.9871705,-2.583411,2.6892471,-0.10343522,0.83972865,-0.7315521,-1.893585,-1.0224564,2.3457637,1.2399775,1.0744127,-1.2614925,0.38509008",
+          "collectInterval": 1,
+          "addcartInterval": 0,
+          "sellcntInterval": 1,
+          "evlcntInterval": 0,
+          "titleLen": 34,
+          "title2": "《清平乐》原创手工布艺笔记本 锦缎封面 手缝科普特线装 复古风 手帐",
+          "uvInterval": 0,
+          "topTime": 0,
+          "top": false,
+          "kind": 18
+        }
+
+GET item/_search
+GET item/_search?explain=true
+{
+  "from": 0,
+  "size": 96,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "has_parent": {
+            "query": {
+              "match_all": {
+                "boost": 1
+              }
+            },
+            "parent_type": "user",
+            "score": false,
+            "ignore_unmapped": false,
+            "boost": 0,
+            "inner_hits": {
+              "ignore_unmapped": false,
+              "from": 0,
+              "size": 20,
+              "version": false,
+              "explain": false,
+              "track_scores": false
+            }
+          }
+        }
+      ],
+      "filter": [
+        {
+          "bool": {
+            "must": [
+              {
+                "range": {
+                  "stock": {
+                    "from": 0,
+                    "to": null,
+                    "include_lower": false,
+                    "include_upper": true,
+                    "boost": 1
+                  }
+                }
+              },
+              {
+                "terms": {
+                  "iid": [
+                    1158276
+                  ],
+                  "boost": 1
+                }
+              },
+              {
+                "terms": {
+                  "type": [
+                    1,
+                    2
+                  ],
+                  "boost": 1
+                }
+              },
+              {
+                "term": {
+                  "itemStatus": {
+                    "value": 1,
+                    "boost": 1
+                  }
+                }
+              },
+              {
+                "term": {
+                  "bottom": {
+                    "value": 0,
+                    "boost": 1
+                  }
+                }
+              },
+              {
+                "term": {
+                  "postStatus": {
+                    "value": 0,
+                    "boost": 1
+                  }
+                }
+              },
+              {
+                "term": {
+                  "filter": {
+                    "value": 0,
+                    "boost": 1
+                  }
+                }
+              },
+              {
+                "bool": {
+                  "must_not": [
+                    {
+                      "terms": {
+                        "saleType": [
+                          1,
+                          3
+                        ],
+                        "boost": 1
+                      }
+                    }
+                  ],
+                  "adjust_pure_negative": true,
+                  "boost": 1
+                }
+              },
+              {
+                "has_parent": {
+                  "query": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "inBlackList": {
+                              "value": false,
+                              "boost": 1
+                            }
+                          }
+                        },
+                        {
+                          "term": {
+                            "craftsmanRemoved": {
+                              "value": false,
+                              "boost": 1
+                            }
+                          }
+                        }
+                      ],
+                      "adjust_pure_negative": true,
+                      "boost": 1
+                    }
+                  },
+                  "parent_type": "user",
+                  "score": true,
+                  "ignore_unmapped": false,
+                  "boost": 1
+                }
+              }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1
+          }
+        }
+      ],
+      "adjust_pure_negative": true,
+      "boost": 1
+    }
+  },
+  "_source": {
+    "includes": [
+    ],
+    "excludes": []
+  },
+  "track_scores": true,
+  "rescore": [
+    {
+      "window_size": 200,
+      "query": {
+        "rescore_query": {
+          "sltr": {
+            "model": "index_lr_model",
+            "params": {
+              "uCity": "浙江省",
+              "preferenceCategory": [],
+              "gender": 0,
+              "uType": 0,
+              "preferenceKind": [
+                36,
+              1,
+              23
+              ]
+            },
+            "boost": 1
+          }
+        },
+        "query_weight": 0,
+        "rescore_query_weight": 1,
+        "score_mode": "total"
+      }
+    }
+  ]
+}
+GET item/_search?explain=false
+{
+  "from": 0,
+  "size": 64,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "iid": {
+              "value": 337678
+            }
+          }
+        }
+      ],
+      
+      "adjust_pure_negative": true,
+      "boost": 1
+    }
+  },
+  "_source": {
+    "includes": [
+    ],
+    "excludes": []
+  },
+  "track_scores": true,
+  "rescore": [
+    {
+      "window_size": 200,
+      "query": {
+        "rescore_query": {
+          "sltr": {
+            "model": "index_lr_model",
+            "params": {
+              "uCity": "others",
+              "preferenceCategory": [],
+              "gender": 1,
+              "uType": 0,
+              "preferenceKind": []
+            },
+            "boost": 1
+          }
+        },
+        "query_weight": 0,
+        "rescore_query_weight": 1,
+        "score_mode": "total"
+      }
+    }
+  ]
+}
+
+GET item/_search
